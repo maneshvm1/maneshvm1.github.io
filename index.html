@@ -22,6 +22,7 @@
 				const destUrl = new URL(DESTINATION);
 				destUrl.searchParams.set('key', keyValue);
 
+				console.log('url:'+destUrl.toString());
 				window.location.replace(destUrl.toString());
 				return;
 			}
