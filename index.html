@@ -11,6 +11,27 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script>
+			(function () {
+			var url = new URL(window.location.href);
+			var params = url.searchParams;
+
+			if (params.has('key')) {
+				var DESTINATION = 'bayaan://scad.gov.ae';
+				const keyValue = params.get('key');
+				const destUrl = new URL(DESTINATION);
+				destUrl.searchParams.set('key', keyValue);
+
+				window.location.replace(destUrl.toString());
+				return;
+			}
+
+			document.addEventListener('DOMContentLoaded', function(){
+				var msg = document.getElementById('status');
+				if (msg) msg.textContent = 'Unable to redirect to the app.';
+			});
+			})();
+		</script>
 	</head>
 	<body class="is-preload">
 
